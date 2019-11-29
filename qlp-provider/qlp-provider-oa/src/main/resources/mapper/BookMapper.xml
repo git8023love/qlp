@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qlp.cloud.provider.oa.book.mapper.BookMapper">
+    <resultMap id="bookMap" type="com.qlp.cloud.provider.oa.book.entity.Book">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="authorId" column="author_id"/>
+        <result property="author" column="author"/>
+        <result property="url" column="url"/>
+        <result property="intro" column="intro"/>
+        <result property="type" column="type"/>
+        <result property="subType" column="sub_type"/>
+        <result property="category" column="category"/>
+        <result property="status" column="status"/>
+        <result property="rate" column="rate"/>
+        <result property="readUrl" column="read_url"/>
+        <result property="word" column="word"/>
+        <result property="wordNum" column="word_num"/>
+        <result property="sexType" column="sex_type"/>
+        <result property="tags" column="tags"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+    <!--book简单分页查询-->
+    <select id="getBookPage" resultMap="bookMap">
+        SELECT
+        id,
+        name,
+        author_id,
+        author,
+        url,
+        intro,
+        type,
+        sub_type,
+        category,
+        status,
+        rate,
+        read_url,
+        word,
+        word_num,
+        sex_type,
+        tags,
+        create_time,
+        update_time
+        FROM t_book
+        <where>
+            <if test="book.id != null and book.id.trim() != ''">
+                AND id = #{book.id}
+            </if>
+            <if test="book.name != null and book.name.trim() != ''">
+                AND name = #{book.name}
+            </if>
+            <if test="book.authorId != null and book.authorId.trim() != ''">
+                AND author_id = #{book.authorId}
+            </if>
+            <if test="book.author != null and book.author.trim() != ''">
+                AND author = #{book.author}
+            </if>
+            <if test="book.url != null and book.url.trim() != ''">
+                AND url = #{book.url}
+            </if>
+            <if test="book.intro != null and book.intro.trim() != ''">
+                AND intro = #{book.intro}
+            </if>
+            <if test="book.type != null and book.type.trim() != ''">
+                AND type = #{book.type}
+            </if>
+            <if test="book.subType != null and book.subType.trim() != ''">
+                AND sub_type = #{book.subType}
+            </if>
+            <if test="book.category != null and book.category.trim() != ''">
+                AND category = #{book.category}
+            </if>
+            <if test="book.status != null and book.status.trim() != ''">
+                AND status = #{book.status}
+            </if>
+            <if test="book.rate != null and book.rate.trim() != ''">
+                AND rate = #{book.rate}
+            </if>
+            <if test="book.readUrl != null and book.readUrl.trim() != ''">
+                AND read_url = #{book.readUrl}
+            </if>
+            <if test="book.word != null and book.word.trim() != ''">
+                AND word = #{book.word}
+            </if>
+            <if test="book.wordNum != null and book.wordNum.trim() != ''">
+                AND word_num = #{book.wordNum}
+            </if>
+            <if test="book.sexType != null and book.sexType.trim() != ''">
+                AND sex_type = #{book.sexType}
+            </if>
+            <if test="book.tags != null and book.tags.trim() != ''">
+                AND tags = #{book.tags}
+            </if>
+            <if test="book.createTime != null and book.createTime.trim() != ''">
+                AND create_time = #{book.createTime}
+            </if>
+            <if test="book.updateTime != null and book.updateTime.trim() != ''">
+                AND update_time = #{book.updateTime}
+            </if>
+        </where>
+    </select>
+</mapper>

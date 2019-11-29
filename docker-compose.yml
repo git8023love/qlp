@@ -1,0 +1,121 @@
+version: '2'
+services:
+  qlp-mysql:
+    build:
+      context: ./
+      dockerfile: ./db/Dockerfile
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    restart: always
+    container_name: qlp-mysql
+    image: qlp-mysql
+    ports:
+    - 3306:3306
+  qlp-redis:
+    image: redis:5.0
+    ports:
+    - 6379:6379
+    restart: always
+    container_name: qlp-redis
+    hostname: qlp-redis
+
+  qlp-eureka:
+    build:
+      context: ./
+      dockerfile: ./qlp-eureka/Dockerfile
+    restart: always
+    ports:
+    - 8761:8761
+    container_name: qlp-eureka
+    hostname: qlp-eureka
+    image: qlp-eureka
+
+  qlp-config:
+    build:
+      context: ./
+      dockerfile: ./qlp-config/Dockerfile
+    restart: always
+    container_name: qlp-config
+    hostname: qlp-config
+    image: qlp-config
+
+  qlp-gateway:
+    build:
+      context: ./
+      dockerfile: ./qlp-gateway/Dockerfile
+    restart: always
+    ports:
+    - 9999:9999
+    expose:
+      - 9999
+    container_name: qlp-gateway
+    hostname: qlp-gateway
+    image: qlp-gateway
+
+  qlp-auth:
+    build:
+      context: ./
+      dockerfile: ./qlp-auth/Dockerfile
+    restart: always
+    container_name: qlp-auth
+    hostname: qlp-auth
+    image: qlp-auth
+
+  qlp-provider-admin:
+    build:
+      context: ./
+      dockerfile: ./qlp-provider/qlp-provider-admin/Dockerfile
+    restart: always
+    container_name: qlp-provider-admin
+    hostname: qlp-provider-admin
+    image: qlp-provider-admin
+
+  qlp-provider-oa:
+    build:
+      context: ./
+      dockerfile: ./qlp-provider/qlp-provider-oa/Dockerfile
+    restart: always
+    container_name: qlp-provider-oa
+    hostname: qlp-provider-oa
+    image: qlp-provider-oa
+
+  qlp-provider-quartz:
+    build:
+      context: ./
+      dockerfile: ./qlp-provider/qlp-provider-quartz/Dockerfile
+    restart: always
+    container_name: qlp-provider-quartz
+    hostname: qlp-provider-quartz
+    image: qlp-provider-quartz
+
+  qlp-monitor:
+    build:
+      context: ./
+      dockerfile: ./qlp-visual/qlp-monitor/Dockerfile
+    restart: always
+    ports:
+    - 5001:5001
+    container_name: qlp-monitor
+    hostname: qlp-monitor
+    image: qlp-monitor
+
+  qlp-codegen:
+    build:
+      context: ./
+      dockerfile: ./qlp-visual/qlp-codegen/Dockerfile
+    restart: always
+    container_name: qlp-codegen
+    hostname: qlp-codegen
+    image: qlp-codegen
+
+  qlp-zipkin:
+    build:
+      context: ./
+      dockerfile: ./qlp-visual/qlp-zipkin/Dockerfile
+    restart: always
+    image: qlp-zipkin
+    container_name: qlp-zipkin
+    ports:
+    - 5002:5002
+
+

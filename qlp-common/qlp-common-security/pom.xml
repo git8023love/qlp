@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.qlp.cloud</groupId>
+        <artifactId>qlp-common</artifactId>
+        <version>2.3.0</version>
+    </parent>
+    <artifactId>qlp-common-security</artifactId>
+    <packaging>jar</packaging>
+    <description>qlp 安全工具类</description>
+    <dependencies>
+        <!--工具类核心包-->
+        <dependency>
+            <groupId>com.qlp.cloud</groupId>
+            <artifactId>qlp-common-core</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+        <!--安全模块-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security.oauth.boot</groupId>
+            <artifactId>spring-security-oauth2-autoconfigure</artifactId>
+        </dependency>
+        <!--ADMIN API-->
+        <dependency>
+            <groupId>com.qlp.cloud</groupId>
+            <artifactId>qlp-provider-admin-api</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+    </dependencies>
+</project>

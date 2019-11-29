@@ -1,0 +1,7 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.qlp.cloud.provider.quartz.feign.fallback.RemoteBookServiceFallbackImpl,\
+  com.qlp.cloud.provider.quartz.feign.factory.RemoteBookServiceFallbackFactory,\
+  com.qlp.cloud.provider.quartz.feign.fallback.RemoteBookAttrServiceFallbackImpl,\
+  com.qlp.cloud.provider.quartz.feign.factory.RemoteBookAttrServiceFallbackFactory,\
+  com.qlp.cloud.provider.quartz.feign.fallback.RemoteBookTypeServiceFallbackImpl,\
+  com.qlp.cloud.provider.quartz.feign.factory.RemoteBookTypeServiceFallbackFactory

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>qlp</artifactId>
+        <groupId>com.qlp.cloud</groupId>
+        <version>2.3.0</version>
+    </parent>
+
+    <artifactId>qlp-provider</artifactId>
+    <description>qlp 办公协同系统</description>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>qlp-provider-admin</module>
+        <module>qlp-provider-oa</module>
+        <module>qlp-provider-quartz</module>
+    </modules>
+</project>

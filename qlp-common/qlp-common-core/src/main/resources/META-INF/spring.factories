@@ -1,0 +1,7 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.qlp.cloud.common.core.config.JacksonConfig,\
+  com.qlp.cloud.common.core.config.RedisTemplateConfig,\
+  com.qlp.cloud.common.core.config.RestTemplateConfig,\
+  com.qlp.cloud.common.core.config.FilterIgnorePropertiesConfig,\
+  com.qlp.cloud.common.core.exception.GlobalExceptionHandler,\
+  com.qlp.cloud.common.core.util.SpringContextHolder

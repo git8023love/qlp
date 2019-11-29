@@ -1,0 +1,55 @@
+spring:
+  cloud:
+    gateway:
+      locator:
+        enabled: true
+      routes:
+      # 认证中心
+      - id: qlp-auth
+        uri: lb://qlp-auth
+        predicates:
+        - Path=/auth/**
+        filters:
+        # 验证码处理
+        - ValidateCodeGatewayFilter
+        # 前端密码解密
+        - PasswordDecoderFilter
+      #UPMS 模块
+      - id: qlp-provider-admin
+        uri: lb://qlp-provider-admin
+        predicates:
+        - Path=/admin/**
+        filters:
+        # 限流配置
+        - name: RequestRateLimiter
+          args:
+            key-resolver: '#{@remoteAddrKeyResolver}'
+            redis-rate-limiter.replenishRate: 10
+            redis-rate-limiter.burstCapacity: 20
+          # 降级配置
+        - name: Hystrix
+          args:
+            name: default
+            fallbackUri: 'forward:/fallback'
+      # 代码生成模块
+      - id: qlp-codegen
+        uri: lb://qlp-codegen
+        predicates:
+        - Path=/gen/**
+      # OA系统
+      - id: qlp-provider-oa
+        uri: lb://qlp-provider-oa
+        predicates:
+        - Path=/oa/**
+      # quartz系统
+      - id: qlp-provider-quartz
+        uri: lb://qlp-provider-quartz
+        predicates:
+        - Path=/quratz/**
+security:
+  encode:
+    # 前端密码密钥，必须16位
+    key: 'thanks,qlp4cloud' # 不校验验证码终端
+ignore:
+  clients:
+  - test

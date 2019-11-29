@@ -1,0 +1,6 @@
+spring:
+  # 安全配置
+  security:
+    user:
+      name: ENC(k5q+ntz4ZXoJqGd15lHxpg==)     # qlp
+      password: ENC(4MDKghBd/Q7KxV8EvWwiUQ==) # qlp
